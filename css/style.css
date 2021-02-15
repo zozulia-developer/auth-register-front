@@ -10,11 +10,18 @@ body {
 
 .container {
 	display: flex;
-	align-items: center;
-	justify-content: flex-end;
+	align-content: flex-end;
+	flex-direction: column;
 	max-width: 880px;
 	margin: auto;
 	height: 1000px;
+}
+
+.text-info {
+	margin-top: 102px;
+	margin-left: 331px;
+	font-size: 27.74px;
+	color: #b0b0b0;
 }
 
 .login-form {
@@ -22,6 +29,8 @@ body {
 	height: 603px;
 	border: 1px solid #cecece;
 	border-radius: 10px;
+	margin-left: 55px;
+	margin-top: 55px;
 }
 
 .login-form__title {
@@ -119,16 +128,86 @@ body {
 	margin-bottom: 18px;
 }
 
-.checkbox {
-	margin-left: 28px;
-	border: 1px solid #dcdcdc;
-	border-radius: 10px;
-	background: #e1e1e1;
+.input-text.reg.input-email {
+	background-image: url(../img/sign.png);
+	background-repeat: no-repeat;
+	background-position: 96% 50%;
+}
+
+.input-text.reg.input-username {
+	background-image: url(../img/checked.png);
+	background-repeat: no-repeat;
+	background-position: 96% 50%;
+}
+
+.checkbox-pass {
+	position: absolute;
+	z-index: -1;
+	opacity: 0;
+}
+
+.checkbox-pass+label {
+	display: inline-flex;
+	align-items: center;
+	user-select: none;
+}
+
+.checkbox-pass+label::before {
+	content: '';
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	flex-shrink: 0;
+	flex-grow: 0;
+	border: 1px solid #e1e1e1;
+	border-radius: 0.3em;
+	margin-right: 0.5em;
+	background-color: #e1e1e1;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 50% 50%;
+}
+
+.checkbox-pass:checked+label::before {
+	border-color: #0b76ef;
+	background-color: #0b76ef;
+	background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+}
+
+.checkbox-pass:not(:disabled):not(:checked)+label:hover::before {
+	border-color: #b3d7ff;
 }
 
 .remember-password {
 	color: #d1d1d1;
 	font-size: 13.74px;
+	margin-left: 29px;
+}
+
+[data-tooltip] {
+	position: relative;
+}
+
+[data-tooltip]::after {
+	content: attr(data-tooltip);
+	position: absolute;
+	width: 256px;
+	height: 60px;
+	left: -135px;
+	top: 0;
+	background: #fff;
+	color: #cbcbcb;
+	padding: 0.5em;
+	box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+	pointer-events: none;
+	opacity: 0;
+	transition: 1s;
+	border-radius: 5px; 
+}
+
+[data-tooltip]:hover::after {
+	opacity: 1;
+	top: 2em;
 }
 
 .btn {
@@ -138,12 +217,25 @@ body {
 	border-radius: 10px;
 	color: #fff;
 	font-size: 21.74px;
+	outline: none;
 }
 
 .btn-login {
-	margin-top: 2px;
-	margin-left: 38px;
+	margin-top: 3px;
+	margin-left: 30px;
 	background: linear-gradient(to right bottom, #004c6c, #4fb6e2);
+}
+
+.btn-login:hover {
+	background: linear-gradient(to right bottom, #4fb6e2, #004c6c);
+}
+
+.btn-login:active {
+	background: #004c6c;
+}
+
+.register {
+	border-left: 1px solid #e7e7e7;
 }
 
 .btn-register {
@@ -151,6 +243,14 @@ body {
 	margin-right: 30px;
 	margin-top: 4px;
 	background: linear-gradient(to right bottom, #aa7800, #ffb400);
+}
+
+.btn-register:hover {
+	background: linear-gradient(to right bottom, #ffb400, #aa7800);
+}
+
+.btn-register:active {
+	background: #aa7800;
 }
 
 .register-text {
